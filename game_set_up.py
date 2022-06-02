@@ -22,8 +22,8 @@ def game_formation() -> None:
             player.reduce_jail_sentence()
         else:
             dice = randint(1, 6)
-            seed(10)
-            print(dice)
+            # seed(10)
+            # print(dice)
 
             current_tile = player.move_forward(dice).item
 
