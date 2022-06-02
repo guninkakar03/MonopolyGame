@@ -11,7 +11,6 @@ def game_formation() -> None:
     player2 = Players()
     player3 = Players()
     player4 = Players()
-    # hello world
 
     list_players = LinkedList([player1, player2, player3, player4])
     curr = list_players._first
