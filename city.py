@@ -14,7 +14,7 @@ class City:
         self.number_of_houses = 0
         self.rent_with_1_house = 0
         self.rent_with_2_house = 0
-        self.rent_of_hotel = 0
+        self.rent_of_hotel = 10
         self.colour = ""
 
     def is_owner(self):
