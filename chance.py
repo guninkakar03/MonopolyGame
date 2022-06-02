@@ -1,0 +1,2 @@
+class Chance:
+    pass
