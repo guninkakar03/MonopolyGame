@@ -26,11 +26,16 @@ class Players:
         self.cash_in_hand -= city.rent
         self.wealth -= city.rent
 
+    def receive_rent(self, rent: int, city: City):
+        self.cash_in_hand += city.rent
+        self.wealth += city.rent
+
     def buy(self, city: City):
         pass
 
-    def buy_property(self, selling_price: int, price: int):
-        self.cash_in_hand -= selling_price
+    def buy_property(self, selling_price: int, city: City, price: int):
+        self.cash_in_hand -= city.acquisition_cost
+        self.properties.append(city)
         # self.wealth += price
 
     def move_forward(self, num) -> LinkedList:
