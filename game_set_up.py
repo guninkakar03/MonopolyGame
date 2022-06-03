@@ -28,9 +28,9 @@ def game_formation() -> None:
             current_tile = player.move_forward(dice).item
 
             if issubclass(current_tile, City):
-                if current_tile.owner :  # what if the owner is the person itself? # also check if there a owner
+                if current_tile.owner :  # what if the owner is the person itself? # also check if there is an owner
 
-                    player.pay_rent(111) # write code to get rent value
+                    player.pay_rent(current_tile.rent) # write code to get rent value
                 else:
                     # ask for the options of what to do
                     print("yp")
@@ -55,6 +55,8 @@ def jail_decision(player: Players, decision: str) -> None:
         player.pay_rent(150) # player pays $150 to get out
     else:
         player.send_to_jail()
+def buy_or_not(player:Players, decision:str)->None:
+    if decision==''
 
 game_formation()
 
