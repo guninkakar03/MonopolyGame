@@ -2,6 +2,7 @@ from city import *
 from gaming_board import *
 from attributes_boad import *
 
+
 class Players:
     """
     keeps track of the data of the players of the game.
@@ -21,23 +22,23 @@ class Players:
         self.properties = []
         self.colours = []
 
-    def pay_rent(self, rent: int):
-        self.cash_in_hand -= rent
-        self.wealth -= rent
+    def pay_rent(self, rent: int, city: City):
+        self.cash_in_hand -= city.rent
+        self.wealth -= city.rent
 
     def buy(self, city: City):
         pass
 
     def buy_property(self, selling_price: int, price: int):
         self.cash_in_hand -= selling_price
-        self.wealth += price
+        # self.wealth += price
 
     def move_forward(self, num) -> LinkedList:
         curr = self.board
         for _ in range(num):
             curr = curr.next
             if isinstance(curr, Start):
-                self.cash_in_hand += 200 # adds money when player passes through the start
+                self.cash_in_hand += 200  # adds money when player passes through the start
 
         self.board = curr
         return curr
