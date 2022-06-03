@@ -16,9 +16,9 @@ def game_formation() -> None:
     curr = list_players._first
 
     while True:
-        # add a condition for bankuptacy
+        # add a condition for bankruptcy
         player = curr.item
-        if player.jail_num > 0: # checks if the player is in jail or not
+        if player.jail_num > 0:  # checks if the player is in jail or not
             player.reduce_jail_sentence()
         else:
             dice = randint(1, 6)
@@ -28,20 +28,24 @@ def game_formation() -> None:
             current_tile = player.move_forward(dice).item
 
             if issubclass(current_tile, City):
-                if current_tile.owner :  # what if the owner is the person itself? # also check if there is an owner
-
-                    player.pay_rent(current_tile.rent) # write code to get rent value
+                if current_tile.owner and current_tile not in player.properties:  # what if the owner is the person itself? # also check if there is an owner
+                    player.pay_rent(current_tile.rent)  # write code to get rent value
                 else:
+                    if player.cash_in_hand >= current_tile.acquisition_cost:
+                        verdict = input(F"Do you want to buy the property for{current_tile.acquisition_cost}?(Y/N)")
+                        if verdict == 'Y':
+                            player.buy_property(current_tile)
+
                     # ask for the options of what to do
                     print("yp")
-                    player.buy(current_tile)
-            elif isinstance(current_tile, Jail): # stuck for 3 rounds or pay certain amount to get out
-                verdict = input("stuck for 3 rounds or pay 150 to get out: ") # py qt button
+
+            elif isinstance(current_tile, Jail):  # stuck for 3 rounds or pay certain amount to get out
+                verdict = input("stuck for 3 rounds or pay 150 to get out: ")  # py qt button
                 jail_decision(player, verdict)
 
             elif isinstance(current_tile, Chance):
                 pass
-            elif isinstance(current_tile, Start): # if the tile is
+            elif isinstance(current_tile, Start):  # if the tile is
                 pass
         # check the status of this player
         # if bankrupt, ie, if money is less than $-500
@@ -52,11 +56,14 @@ def game_formation() -> None:
 
 def jail_decision(player: Players, decision: str) -> None:
     if decision == "pay":
-        player.pay_rent(150) # player pays $150 to get out
+        player.cash_in_hand -= 150  # player pays $150 to get out, need to check whether wealth decreases too
     else:
         player.send_to_jail()
-def buy_or_not(player:Players, decision:str)->None:
-    if decision==''
+
+
+def buy_or_not(player: Players, decision: str) -> None:
+    if decision == 'Y':
+        player.buy_property()
+
 
 game_formation()
-
