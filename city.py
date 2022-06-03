@@ -4,6 +4,8 @@ class City:
     a player.
 
     """
+    rent: int
+    owner: bool
 
     def __init__(self):
         self.owner = False
