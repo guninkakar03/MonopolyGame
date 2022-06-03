@@ -6,6 +6,7 @@ class City:
     """
     rent: int
     owner: bool
+    acquisition_cost:int
 
     def __init__(self):
         self.owner = False
