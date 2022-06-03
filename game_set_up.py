@@ -29,7 +29,11 @@ def game_formation() -> None:
 
             if issubclass(current_tile, City):
                 if current_tile.owner and current_tile not in player.properties:  # what if the owner is the person itself? # also check if there is an owner
-                    player.pay_rent(current_tile.rent)  # write code to get rent value
+                    player.pay_rent(current_tile)
+                    player_recieve = who_property(list_players, current_tile)#Idk why is this a problem
+                    player_recieve.receive_rent(current_tile)
+
+                    # write code to get rent value
                 else:
                     if player.cash_in_hand >= current_tile.acquisition_cost:
                         verdict = input(F"Do you want to buy the property for{current_tile.acquisition_cost}?(Y/N)")
@@ -61,9 +65,23 @@ def jail_decision(player: Players, decision: str) -> None:
         player.send_to_jail()
 
 
-def buy_or_not(player: Players, decision: str) -> None:
+'''def buy_or_not(player: Players, decision: str) -> None:
     if decision == 'Y':
-        player.buy_property()
+        player.buy_property()'''
+
+
+def who_property(list_players: LinkedList, city:City) -> Players:
+    """
+    list_players: LinkedList of players
+    city: A property
+    :return: Returns the player who has the property.
+    """
+    curr = list_players._first
+    while curr is not None:
+        player = curr.item
+        if city in player.properties:
+            return player
+        curr = curr.next
 
 
 game_formation()
