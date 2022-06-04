@@ -28,20 +28,22 @@ def game_formation() -> None:
             current_tile = player.move_forward(dice).item
 
             if issubclass(current_tile, City):
+
                 if not current_tile.owner and current_tile not in player.properties:  # what if the owner is the person itself? # also check if there is an owner
                     player.pay_rent(current_tile)
-                    player_recieve = who_property(list_players, current_tile)  # Idk why is this a problem
+                    player_recieve = who_property(list_players, current_tile)
                     player_recieve.receive_rent(current_tile)
+                    # Idk why is this a problem -> since type contact is city
+                    # and this not city but its sub class
 
-                    # write code to get rent value
-                else:
-                    if player.cash_in_hand >= current_tile.acquisition_cost:
-                        verdict = input(F"Do you want to buy the property for{current_tile.acquisition_cost}?(Y/N)")
-                        if verdict == 'Y':
-                            player.buy_property(current_tile)
+                elif player.cash_in_hand >= current_tile.acquisition_cost:
+                    verdict = input(F"Do you want to buy the property for{current_tile.acquisition_cost}?(Y/N)")
+                    if verdict == 'Y':
+                        player.buy_property(current_tile)
 
                     # ask for the options of what to do
                     print("yp")
+                # else the player has insufficient fund -> no options by py qt
 
             elif isinstance(current_tile, Jail):  # stuck for 3 rounds or pay certain amount to get out
                 verdict = input("stuck for 3 rounds or pay 150 to get out: ")  # py qt button
@@ -49,13 +51,24 @@ def game_formation() -> None:
 
             elif isinstance(current_tile, Chance):
                 pass
-            elif isinstance(current_tile, Start):  # if the tile is
+            elif isinstance(current_tile, Start):
+                # if the tile is Start do nothing as +200
+                # is handled in player api
                 pass
+
         # check the status of this player
         # if bankrupt, ie, if money is less than $-500
-        #
+        if player.cash_in_hand < -500:
+            # python qt line === you are bankrupt ===
+            list_players.delete_player(player)
+        if len(list_players) == 1:
+            # python qt line === you won ===
+            break
+        if player.cash_in_hand > 3000:
+            # python qt line === you won ===
+            break
         curr = curr.next  # gets the next player
-        break
+
 
 
 def jail_decision(player: Players, decision: str) -> None:

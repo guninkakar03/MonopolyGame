@@ -296,17 +296,17 @@ class Peru(City):
         self.colour = "blue"
 
 
-# class Brazil(City):
-#     pass
-#
-#
-# class Istanbul(City):
-#     pass
-#
-#
-# class Dhaka(City):
-#     pass
-#
-#
-# class Wuhan(City):
-#     pass
+class Brazil(City):
+    pass
+
+
+class Istanbul(City):
+    pass
+
+
+class Dhaka(City):
+    pass
+
+
+class Wuhan(City):
+    pass

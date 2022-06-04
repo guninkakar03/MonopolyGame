@@ -125,5 +125,8 @@ class LinkedList:
         else:
             return curr.item
 
+    def __len__(self):
+        pass
 
-
+    def delete_player(self, item):
+        pass
