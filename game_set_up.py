@@ -30,7 +30,7 @@ def game_formation() -> None:
             if issubclass(current_tile, City):
                 if current_tile.owner and current_tile not in player.properties:  # what if the owner is the person itself? # also check if there is an owner
                     player.pay_rent(current_tile)
-                    player_recieve = who_property(list_players, current_tile)#Idk why is this a problem
+                    player_recieve = who_property(list_players, current_tile)  # Idk why is this a problem
                     player_recieve.receive_rent(current_tile)
 
                     # write code to get rent value
@@ -70,7 +70,7 @@ def jail_decision(player: Players, decision: str) -> None:
         player.buy_property()'''
 
 
-def who_property(list_players: LinkedList, city:City) -> Players:
+def who_property(list_players: LinkedList, city: City) -> Players:
     """
     list_players: LinkedList of players
     city: A property
