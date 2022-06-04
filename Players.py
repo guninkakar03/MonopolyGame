@@ -22,11 +22,11 @@ class Players:
         self.properties = []
         self.colours = []
 
-    def pay_rent(self, rent: int, city: City):
+    def pay_rent(self, city: City):
         self.cash_in_hand -= city.rent
         self.wealth -= city.rent
 
-    def receive_rent(self, rent: int, city: City):
+    def receive_rent(self, city: City):
         self.cash_in_hand += city.rent
         self.wealth += city.rent
 
