@@ -36,6 +36,7 @@ class Players:
     def buy_property(self, selling_price: int, city: City, price: int):
         self.cash_in_hand -= city.acquisition_cost
         self.properties.append(city)
+        self.colours.append(city.colour)
         # self.wealth += price
 
     def move_forward(self, num) -> LinkedList:
