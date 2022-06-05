@@ -27,7 +27,7 @@ def game_formation() -> None:
 
             current_tile = player.move_forward(dice).item
 
-            if issubclass(current_tile, City):
+            if isinstance(current_tile, City):
 
                 if not current_tile.owner and current_tile not in player.properties:  # what if the owner is the person itself? # also check if there is an owner
                     player.pay_rent(current_tile)
@@ -52,9 +52,10 @@ def game_formation() -> None:
             elif isinstance(current_tile, Chance):
                 pass
             elif isinstance(current_tile, Start):
+                player.cash_in_hand += 200
+                player.wealth += 200
                 # if the tile is Start do nothing as +200
                 # is handled in player api
-                pass
 
         # check the status of this player
         # if bankrupt, ie, if money is less than $-500
@@ -68,7 +69,6 @@ def game_formation() -> None:
             # python qt line === you won ===
             break
         curr = curr.next  # gets the next player
-
 
 
 def jail_decision(player: Players, decision: str) -> None:
