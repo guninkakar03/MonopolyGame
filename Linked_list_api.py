@@ -129,4 +129,40 @@ class LinkedList:
         pass
 
     def delete_player(self, item):
-        pass
+        if self._first is None:
+            print("Empty linked list")
+            return
+        curr = self._first
+        prev = None
+        if curr.item == item:
+            #  Remove first node
+            #  Delete _first of circular list
+            if curr.next == curr:
+                #  Only one element of circular list
+                self._first = None
+            else:
+                #  Find last node
+                while curr.next != self._first:
+                    #  Visit to next node
+                    curr = curr.next
+
+                curr.next = self._first.next
+                prev = self._first
+                self._first = prev.next
+
+        else:
+            curr = self._first.next
+            #  Find the deleted node
+            while curr != self._first:
+                if curr.item == item:
+                    #  If deleted node found
+                    prev.next = curr.next
+                    curr = None
+                    prev = None
+                    break
+
+                prev = curr
+                curr = curr.next
+
+            if curr is not None:
+                print("\nGiven node is not exist")
