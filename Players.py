@@ -1,6 +1,7 @@
 from city import *
 from gaming_board import *
 from attributes_boad import *
+from Public_property import *
 
 
 class Players:
@@ -30,6 +31,14 @@ class Players:
         self.cash_in_hand += city.rent
         self.wealth += city.rent
 
+    def pay_rent_public(self, pp: Publicproperties):
+        self.cash_in_hand -= pp.rent
+        self.wealth -= pp.rent
+
+    def receive_rent_public(self, pp: Publicproperties):
+        self.cash_in_hand += pp.rent
+        self.wealth += pp.rent
+
     def buy(self, city: City):
         pass
 
@@ -38,6 +47,11 @@ class Players:
         self.properties.append(city)
         self.colours.append(city.colour)
         # self.wealth += price
+
+    def buy_publicproperty(self, pp: Publicproperties):
+        self.cash_in_hand -= pp.acquisition_cost
+        self.properties.append(pp)
+        # self.colours.append(pp.colour)
 
     def move_forward(self, num) -> LinkedList:
         curr = self.board
