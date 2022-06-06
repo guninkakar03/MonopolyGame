@@ -4,6 +4,7 @@ from random import randint, seed
 from Linked_list_api import *
 from attributes_boad import *
 from city import *
+from Public_property import *
 
 
 def game_formation() -> None:
