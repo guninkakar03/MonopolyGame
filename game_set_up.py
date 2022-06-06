@@ -26,13 +26,16 @@ def game_formation() -> None:
             # print(dice)
 
             current_tile = player.move_forward(dice).item
+            if dice == 6:
+                new_dice = randint(1, 6)
+                current_tile = player.move_forward(new_dice).item
 
             if isinstance(current_tile, City):
 
                 if not current_tile.owner and current_tile not in player.properties:  # what if the owner is the person itself? # also check if there is an owner
                     player.pay_rent(current_tile)
-                    player_recieve = who_property(list_players, current_tile)
-                    player_recieve.receive_rent(current_tile)
+                    player_receive = who_property(list_players, current_tile)
+                    player_receive.receive_rent(current_tile)
                     # Idk why is this a problem -> since type contact is city
                     # and this not city but its sub class
 
@@ -56,6 +59,8 @@ def game_formation() -> None:
                 player.wealth += 200
                 # if the tile is Start do nothing as +200
                 # is handled in player api
+            elif isinstance(current_tile, Publicproperties):
+                pass
 
         # check the status of this player
         # if bankrupt, ie, if money is less than $-500
