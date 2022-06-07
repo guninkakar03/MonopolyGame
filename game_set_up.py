@@ -96,7 +96,7 @@ def who_property(list_players: LinkedList, city: City) -> Players:
     :return: Returns the player who has the property.
     """
     curr = list_players._first
-    while curr is not None:
+    while curr.next is not list_players._first:
         player = curr.item
         if city in player.properties:
             return player
