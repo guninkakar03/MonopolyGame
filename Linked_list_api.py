@@ -125,10 +125,39 @@ class LinkedList:
         else:
             return curr.item
 
-    def __len__(self):
-        pass
+    def __len__(self) -> int:
+        """
+        :return: The length of the linked list
+        >>> len(LinkedList([1,2,3,4]))
+        4
+        >>> len(LinkedList([]))
+        0
+        >>> len(LinkedList([1]))
+        1
+        """
+        if self._first is None:
+            # Empty Linked List
+            return 0
+        count = 0
+        curr = self._first
+        if curr.next == self._first:
+            # Only one element
+            return 1
+        else:
+            while curr.next != self._first:
+                count += 1
+                curr = curr.next
+            return count+1
 
-    def delete_player(self, item):
+    def delete_player(self, item) -> None:
+        """
+
+         item:Item to be deleted
+        >>> linky=LinkedList([1,2,3,4,5])
+        >>> linky.delete_player(4)
+        >>> str(linky)
+        '[1 -> 2 -> 3 -> 5]'
+        """
         if self._first is None:
             print("Empty linked list")
             return
