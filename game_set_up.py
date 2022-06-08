@@ -6,7 +6,6 @@ from attributes_boad import *
 from city import *
 from Public_property import *
 
-
 def game_formation() -> None:
     player1 = Players()
     player2 = Players()
@@ -71,7 +70,7 @@ def game_formation() -> None:
         if len(list_players) == 1:
             # python qt line === you won ===
             break
-        if player.cash_in_hand > 3000:
+        if player.cash_in_hand >= 3000:
             # python qt line === you won ===
             break
         curr = curr.next  # gets the next player
