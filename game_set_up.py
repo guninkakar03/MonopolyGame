@@ -52,7 +52,7 @@ def game_formation() -> None:
                 verdict = input("stuck for 3 rounds or pay 150 to get out: ")  # py qt button
                 jail_decision(player, verdict)
 
-            elif isinstance(current_tile, Chance):
+            elif isinstance(current_tile, CommunityChest):
                 pass
             elif isinstance(current_tile, Start):
                 player.cash_in_hand += 200

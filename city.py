@@ -83,7 +83,6 @@ class London(City):
         self.rent_of_hotel = 350
         self.colour = "blue"
 
-# todo
 
 class Oslo(City):
     def __init__(self):
@@ -111,7 +110,6 @@ class Toronto(City):
         self.colour = "blue"
 
 
-
 # ==============================================================================
 # cities of black tile
 # ==============================================================================
@@ -127,8 +125,7 @@ class Mumbai(City):
         self.rent_with_1_house = 110
         self.rent_with_2_house = 220
         self.rent_of_hotel = 350
-        self.colour = "blue"
-
+        self.colour = "black"
 
 
 class LosAngeles(City):
@@ -141,8 +138,7 @@ class LosAngeles(City):
         self.rent_with_1_house = 110
         self.rent_with_2_house = 220
         self.rent_of_hotel = 350
-        self.colour = "blue"
-
+        self.colour = "black"
 
 
 class Waterloo(City):
@@ -155,8 +151,49 @@ class Waterloo(City):
         self.rent_with_1_house = 110
         self.rent_with_2_house = 220
         self.rent_of_hotel = 350
-        self.colour = "blue"
+        self.colour = "black"
 
+
+# ==============================================================================
+# cities of yellow tile
+# ==============================================================================
+class Sydney(City):
+    def __init__(self):
+        City.__init__(cost_of_house, cost_of_hotel)
+        self.owner = False
+        self.acquisition_cost = 100
+        self.rent = 27
+        self.number_of_houses = 0
+        self.rent_with_1_house = 110
+        self.rent_with_2_house = 220
+        self.rent_of_hotel = 350
+        self.colour = "yellow"
+
+
+class Seoul(City):
+    def __init__(self):
+        City.__init__(cost_of_house, cost_of_hotel)
+        self.owner = False
+        self.acquisition_cost = 100
+        self.rent = 27
+        self.number_of_houses = 0
+        self.rent_with_1_house = 110
+        self.rent_with_2_house = 220
+        self.rent_of_hotel = 350
+        self.colour = "yellow"
+
+
+class Bangkok(City):
+    def __init__(self):
+        City.__init__(cost_of_house, cost_of_hotel)
+        self.owner = False
+        self.acquisition_cost = 100
+        self.rent = 27
+        self.number_of_houses = 0
+        self.rent_with_1_house = 110
+        self.rent_with_2_house = 220
+        self.rent_of_hotel = 350
+        self.colour = "yellow"
 
 
 # ==============================================================================
@@ -174,8 +211,7 @@ class Shanghai(City):
         self.rent_with_1_house = 110
         self.rent_with_2_house = 220
         self.rent_of_hotel = 350
-        self.colour = "blue"
-
+        self.colour = "brown"
 
 
 class Moscow(City):
@@ -188,8 +224,7 @@ class Moscow(City):
         self.rent_with_1_house = 110
         self.rent_with_2_house = 220
         self.rent_of_hotel = 350
-        self.colour = "blue"
-
+        self.colour = "brown"
 
 
 class Cairo(City):
@@ -202,53 +237,7 @@ class Cairo(City):
         self.rent_with_1_house = 110
         self.rent_with_2_house = 220
         self.rent_of_hotel = 350
-        self.colour = "blue"
-
-
-
-# ==============================================================================
-# cities of yellow tile
-# ==============================================================================
-class Sydney(City):
-    def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
-        self.owner = False
-        self.acquisition_cost = 100
-        self.rent = 27
-        self.number_of_houses = 0
-        self.rent_with_1_house = 110
-        self.rent_with_2_house = 220
-        self.rent_of_hotel = 350
-        self.colour = "blue"
-
-
-
-class Seoul(City):
-    def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
-        self.owner = False
-        self.acquisition_cost = 100
-        self.rent = 27
-        self.number_of_houses = 0
-        self.rent_with_1_house = 110
-        self.rent_with_2_house = 220
-        self.rent_of_hotel = 350
-        self.colour = "blue"
-
-
-
-class Bangkok(City):
-    def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
-        self.owner = False
-        self.acquisition_cost = 100
-        self.rent = 27
-        self.number_of_houses = 0
-        self.rent_with_1_house = 110
-        self.rent_with_2_house = 220
-        self.rent_of_hotel = 350
-        self.colour = "blue"
-
+        self.colour = "brown"
 
 
 # ==============================================================================
@@ -265,8 +254,7 @@ class Madrid(City):
         self.rent_with_1_house = 110
         self.rent_with_2_house = 220
         self.rent_of_hotel = 350
-        self.colour = "blue"
-
+        self.colour = "green"
 
 
 class Jakarta(City):
@@ -279,8 +267,7 @@ class Jakarta(City):
         self.rent_with_1_house = 110
         self.rent_with_2_house = 220
         self.rent_of_hotel = 350
-        self.colour = "blue"
-
+        self.colour = "green"
 
 
 class Peru(City):
@@ -293,20 +280,4 @@ class Peru(City):
         self.rent_with_1_house = 110
         self.rent_with_2_house = 220
         self.rent_of_hotel = 350
-        self.colour = "blue"
-
-
-class Brazil(City):
-    pass
-
-
-class Istanbul(City):
-    pass
-
-
-class Dhaka(City):
-    pass
-
-
-class Wuhan(City):
-    pass
+        self.colour = "green"
