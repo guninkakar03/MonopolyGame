@@ -50,6 +50,7 @@ class LinkedList:
     # _first:
     #     The _first node in the linked list, or None if the list is empty.
     _first: Optional[_Node]
+    _last: Optional[_Node]
 
     # def __init__(self) -> None:
     #     """Initialize a new empty linked list containing the given items.
@@ -62,7 +63,12 @@ class LinkedList:
         The _first node in the linked list contains the _first item
         in <items>.
         """
+        if not items:
+            self._first = None
+            self._last = None
+            return
         self._first = None
+        self._last = None
         node = None
         curr_node = None
         for item in items:
@@ -76,6 +82,14 @@ class LinkedList:
                 curr_node = new_node
         self._first = node
         curr_node.next = self._first
+
+        # assigning the last node
+        first_item = self._first.item
+        curr = self._first.next
+        while curr.next.item != first_item:
+            curr = curr.next
+        self._last = curr
+
 
     # ------------------------------------------------------------------------
     # Methods from lecture/readings
@@ -99,11 +113,15 @@ class LinkedList:
         >>> str(LinkedList([]))
         '[]'
         """
+        if self._first is None:
+            return '[]'
         items = []
         curr = self._first
-        while curr is not None:
+        first_item = self._first.item
+        while curr.next.item != first_item:
             items.append(str(curr.item))
             curr = curr.next
+        items.append(str(self._last.item))
         return '[' + ' -> '.join(items) + ']'
 
     def __getitem__(self, index: int) -> Any:
@@ -147,51 +165,23 @@ class LinkedList:
             while curr.next != self._first:
                 count += 1
                 curr = curr.next
-            return count+1
+            return count + 1
 
     def delete_player(self, item) -> None:
         """
-
-         item:Item to be deleted
         >>> linky=LinkedList([1,2,3,4,5])
         >>> linky.delete_player(4)
         >>> str(linky)
         '[1 -> 2 -> 3 -> 5]'
         """
         if self._first is None:
-            print("Empty linked list")
-            return
-        curr = self._first
-        prev = None
-        if curr.item == item:
-            #  Remove first node
-            #  Delete _first of circular list
-            if curr.next == curr:
-                #  Only one element of circular list
-                self._first = None
-            else:
-                #  Find last node
-                while curr.next != self._first:
-                    #  Visit to next node
-                    curr = curr.next
-
-                curr.next = self._first.next
-                prev = self._first
-                self._first = prev.next
-
+            return None
+        elif self._last is None:
+            return None
         else:
-            curr = self._first.next
-            #  Find the deleted node
-            while curr != self._first:
-                if curr.item == item:
-                    #  If deleted node found
-                    prev.next = curr.next
-                    curr = None
-                    prev = None
-                    break
-
-                prev = curr
+            curr = self._first
+            while curr.next.item != item:
                 curr = curr.next
+            curr.next = curr.next.next
 
-            if curr is not None:
-                print("\nGiven node is not exist")
+
