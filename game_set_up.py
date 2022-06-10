@@ -1,3 +1,5 @@
+from typing import Union
+
 from chance import *
 from Players import *
 from random import randint, seed
@@ -45,7 +47,7 @@ def game_formation() -> None:
                 # if the tile is Start do nothing as +200
                 # is handled in player api
             elif isinstance(current_tile, Publicproperties):
-                pass
+                property_decision(current_tile, player, list_players)
 
         # check the status of this player
         # if bankrupt, ie, if money is less than $-500
@@ -62,7 +64,7 @@ def game_formation() -> None:
         curr = curr.next  # gets the next player
 
 
-def property_decision(current_tile: City, player: Players,
+def property_decision(current_tile: Union[City, Publicproperties], player: Players,
                       list_players: LinkedList) -> None:
     # checks if the property is owned
     if current_tile.owner and current_tile not in player.properties:
@@ -80,6 +82,10 @@ def property_decision(current_tile: City, player: Players,
     else:
         pass
         # py qt ===insufficient funds===
+
+
+
+
 
 
 def who_property(list_players: LinkedList, city: City) -> Players:
