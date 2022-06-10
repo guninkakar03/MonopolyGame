@@ -6,6 +6,7 @@ from attributes_boad import *
 from city import *
 from Public_property import *
 
+
 def game_formation() -> None:
     player1 = Players()
     player2 = Players()
@@ -30,8 +31,10 @@ def game_formation() -> None:
             if isinstance(current_tile, City):
                 property_decision(current_tile, player, list_players)
 
-            elif isinstance(current_tile, Jail):  # stuck for 3 rounds or pay certain amount to get out
-                verdict = input("stuck for 3 rounds or pay 150 to get out: ")  # py qt button
+            elif isinstance(current_tile,
+                            Jail):  # stuck for 3 rounds or pay certain amount to get out
+                verdict = input(
+                    "stuck for 3 rounds or pay 150 to get out: ")  # py qt button
                 jail_decision(player, verdict)
 
             elif isinstance(current_tile, CommunityChest):
@@ -48,7 +51,8 @@ def game_formation() -> None:
         # if bankrupt, ie, if money is less than $-500
         if player.cash_in_hand < -500:
             # python qt line === you are bankrupt ===
-            list_players.delete_player(player) # I believe this would be a problem - let's discuss asap!
+            list_players.delete_player(
+                player)  # I believe this would be a problem - let's discuss asap!
         if len(list_players) == 1:
             # python qt line === you won ===
             break
@@ -58,8 +62,8 @@ def game_formation() -> None:
         curr = curr.next  # gets the next player
 
 
-def property_decision(current_tile: City, player: Players, list_players: LinkedList) -> None:
-
+def property_decision(current_tile: City, player: Players,
+                      list_players: LinkedList) -> None:
     # checks if the property is owned
     if current_tile.owner and current_tile not in player.properties:
 
@@ -69,9 +73,10 @@ def property_decision(current_tile: City, player: Players, list_players: LinkedL
 
 
     elif player.cash_in_hand >= current_tile.acquisition_cost:
-        verdict = input(F"Do you want to buy the property for{current_tile.acquisition_cost}?(Y/N)")
+        verdict = input(
+            F"Do you want to buy the property for{current_tile.acquisition_cost}?(Y/N)")
         if verdict == 'Y':
-            player.buy_property(current_tile) # check this
+            player.buy_property(current_tile)  # check this
     else:
         pass
         # py qt ===insufficient funds===
@@ -101,9 +106,5 @@ def jail_decision(player: Players, decision: str) -> None:
 '''def buy_or_not(player: Players, decision: str) -> None:
     if decision == 'Y':
         player.buy_property()'''
-
-
-
-
 
 game_formation()

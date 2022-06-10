@@ -31,26 +31,26 @@ class Players:
         self.cash_in_hand += city.rent
         self.wealth += city.rent
 
-    def pay_rent_public(self, pp: Publicproperties):
-        self.cash_in_hand -= pp.rent
-        self.wealth -= pp.rent
+    def pay_rent_public(self, publicproperty: Publicproperties):
+        self.cash_in_hand -= publicproperty.rent
+        self.wealth -= publicproperty.rent
 
-    def receive_rent_public(self, pp: Publicproperties):
-        self.cash_in_hand += pp.rent
-        self.wealth += pp.rent
+    def receive_rent_public(self, publicproperty: Publicproperties):
+        self.cash_in_hand += publicproperty.rent
+        self.wealth += publicproperty.rent
 
     def buy(self, city: City):
         pass
 
-    def buy_property(self, selling_price: int, city: City, price: int):
+    def buy_property(self, city: City):
         self.cash_in_hand -= city.acquisition_cost
         self.properties.append(city)
         self.colours.append(city.colour)
         # self.wealth += price
 
-    def buy_publicproperty(self, pp: Publicproperties):
-        self.cash_in_hand -= pp.acquisition_cost
-        self.properties.append(pp)
+    def buy_publicproperty(self, publicproperty: Publicproperties):
+        self.cash_in_hand -= publicproperty.acquisition_cost
+        self.properties.append(publicproperty)
         # self.colours.append(pp.colour)
 
     def move_forward(self, num) -> LinkedList:
