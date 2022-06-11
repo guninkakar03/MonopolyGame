@@ -68,7 +68,6 @@ def property_decision(current_tile: City, player: Players, list_players: LinkedL
         player_receive = who_property(list_players, current_tile)
         player_receive.receive_rent(current_tile)
 
-
     elif player.cash_in_hand >= current_tile.acquisition_cost:
         verdict = input(F"Do you want to buy the property for{current_tile.acquisition_cost}?(Y/N)")
         if verdict == 'Y':
