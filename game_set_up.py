@@ -1,5 +1,5 @@
 from chance import *
-from Players import *
+from players import *
 from random import randint, seed
 from Linked_list_api import *
 from attributes_boad import *
