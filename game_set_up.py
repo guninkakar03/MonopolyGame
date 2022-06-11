@@ -4,7 +4,7 @@ from random import randint, seed
 from Linked_list_api import *
 from attributes_boad import *
 from city import *
-from Public_property import *
+from public_property import *
 
 
 def game_formation() -> None:
@@ -30,6 +30,7 @@ def game_formation() -> None:
 
             if isinstance(current_tile, City):
                 property_decision(current_tile, player, list_players)
+                player.update_rent(current_tile)
 
             elif isinstance(current_tile, Jail):  # stuck for 3 rounds or pay certain amount to get out
                 verdict = input("stuck for 3 rounds or pay 150 to get out: ")  # py qt button
@@ -38,10 +39,10 @@ def game_formation() -> None:
             elif isinstance(current_tile, CommunityChest):
                 pass
             elif isinstance(current_tile, Start):
-                player.cash_in_hand += 200
-                player.wealth += 200
-                # if the tile is Start do nothing as +200
-                # is handled in player api
+                pass
+                # i removed the 200 thing as it is already covered in
+                # player.move_forward - check it out ;)
+
             elif isinstance(current_tile, Publicproperties):
                 public_property_decision(current_tile, player, list_players)
 

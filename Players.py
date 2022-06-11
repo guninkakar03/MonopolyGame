@@ -1,7 +1,7 @@
 from city import *
 from gaming_board import *
 from attributes_boad import *
-from Public_property import *
+from public_property import *
 
 
 class Players:
@@ -49,6 +49,22 @@ class Players:
         else:
             self.cash_in_hand += publicproperty.rent_with_four
             self.wealth += publicproperty.rent_with_four
+
+    def update_rent(self, city: City) -> None:
+        if self.colours.count(city.colour) == 3:
+            verdict = input("want to buy house: ")
+            if verdict == 'Y':
+                if city.number_of_houses == 0:
+                    city.rent = city.rent_with_1_house
+                    city.number_of_houses += 1
+                elif city.number_of_houses == 1:
+                    city.rent = city.rent_with_2_house
+                    city.number_of_houses += 1
+                else:
+                    city.rent = city.rent_of_hotel
+                    city.number_of_houses += 1
+
+
 
     def buy(self, city: City):
         pass

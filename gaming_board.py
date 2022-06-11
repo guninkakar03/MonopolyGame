@@ -2,7 +2,7 @@ from Linked_list_api import *
 from city import *
 from attributes_boad import *
 from community_chest import *
-from Public_property import *
+from public_property import *
 from auction import *
 
 Gaming_board = [Start,

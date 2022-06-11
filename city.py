@@ -14,7 +14,7 @@ class City:
         self.rent = 0
         self.cost_of_house = 100
         self.cost_of_hotel = 100
-        self.number_of_houses = 10
+        self.number_of_houses = 0
         self.rent_with_1_house = 0
         self.rent_with_2_house = 0
         self.rent_of_hotel = 10
