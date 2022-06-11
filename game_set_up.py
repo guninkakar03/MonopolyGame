@@ -1,5 +1,3 @@
-from typing import Union
-
 from chance import *
 from Players import *
 from random import randint, seed
@@ -33,10 +31,8 @@ def game_formation() -> None:
             if isinstance(current_tile, City):
                 property_decision(current_tile, player, list_players)
 
-            elif isinstance(current_tile,
-                            Jail):  # stuck for 3 rounds or pay certain amount to get out
-                verdict = input(
-                    "stuck for 3 rounds or pay 150 to get out: ")  # py qt button
+            elif isinstance(current_tile, Jail):  # stuck for 3 rounds or pay certain amount to get out
+                verdict = input("stuck for 3 rounds or pay 150 to get out: ")  # py qt button
                 jail_decision(player, verdict)
 
             elif isinstance(current_tile, CommunityChest):
@@ -47,14 +43,13 @@ def game_formation() -> None:
                 # if the tile is Start do nothing as +200
                 # is handled in player api
             elif isinstance(current_tile, Publicproperties):
-                property_decision(current_tile, player, list_players)
+                public_property_decision(current_tile, player, list_players)
 
         # check the status of this player
         # if bankrupt, ie, if money is less than $-500
         if player.cash_in_hand < -500:
             # python qt line === you are bankrupt ===
-            list_players.delete_player(
-                player)  # I believe this would be a problem - let's discuss asap!
+            list_players.delete_player(player)  # I believe this would be a problem - let's discuss asap!
         if len(list_players) == 1:
             # python qt line === you won ===
             break
@@ -64,8 +59,7 @@ def game_formation() -> None:
         curr = curr.next  # gets the next player
 
 
-def property_decision(current_tile: Union[City, Publicproperties], player: Players,
-                      list_players: LinkedList) -> None:
+def property_decision(current_tile: City, player: Players, list_players: LinkedList) -> None:
     # checks if the property is owned
     if current_tile.owner and current_tile not in player.properties:
 
@@ -75,8 +69,7 @@ def property_decision(current_tile: Union[City, Publicproperties], player: Playe
 
 
     elif player.cash_in_hand >= current_tile.acquisition_cost:
-        verdict = input(
-            F"Do you want to buy the property for{current_tile.acquisition_cost}?(Y/N)")
+        verdict = input(F"Do you want to buy the property for{current_tile.acquisition_cost}?(Y/N)")
         if verdict == 'Y':
             player.buy_property(current_tile)  # check this
     else:
@@ -84,8 +77,29 @@ def property_decision(current_tile: Union[City, Publicproperties], player: Playe
         # py qt ===insufficient funds===
 
 
+def public_property_decision(current_tile: Publicproperties, player: Players, list_players: LinkedList) -> None:
+    if not current_tile.owner and current_tile not in player.publicproperty:
+        # player.pay_rent(current_tile)
+        player_receive = who_public_property(list_players, current_tile)
+        if len(player_receive.publicproperty) == 1:
+            player.pay_rent_public(current_tile)
+        elif len(player_receive.publicproperty) == 2:
+            player.cash_in_hand -= current_tile.rent_with_two
+            player.wealth -= current_tile.rent_with_two
+        elif len(player_receive.publicproperty) == 3:
+            player.cash_in_hand -= current_tile.rent_with_three
+            player.wealth -= current_tile.rent_with_three
+        else:
+            player.cash_in_hand -= current_tile.rent_with_four
+            player.wealth -= current_tile.rent_with_four
+        player_receive.receive_rent_public(current_tile)
 
-
+    elif player.cash_in_hand >= current_tile.acquisition_cost:
+        verdict = input(F"Do you want to buy the property for{current_tile.acquisition_cost}?(Y/N)")
+        if verdict == 'Y':
+            player.buy_publicproperty(current_tile)  # check this
+    else:
+        pass
 
 
 def who_property(list_players: LinkedList, city: City) -> Players:
@@ -98,6 +112,20 @@ def who_property(list_players: LinkedList, city: City) -> Players:
     while curr.next is not list_players._first:
         player = curr.item
         if city in player.properties:
+            return player
+        curr = curr.next
+
+
+def who_public_property(list_players: LinkedList, public_property: Publicproperties) -> Players:
+    """
+    list_players: LinkedList of players
+    public_property: A property
+    :return: Returns the player who has the property.
+    """
+    curr = list_players._first
+    while curr.next is not list_players._first:
+        player = curr.item
+        if public_property in player.publicproperty:
             return player
         curr = curr.next
 
