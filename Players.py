@@ -22,6 +22,7 @@ class Players:
         self.board = link._first
         self.properties = []
         self.colours = []
+        self.publicproperty = []
 
     def pay_rent(self, city: City):
         self.cash_in_hand -= city.rent
@@ -36,8 +37,18 @@ class Players:
         self.wealth -= publicproperty.rent
 
     def receive_rent_public(self, publicproperty: Publicproperties):
-        self.cash_in_hand += publicproperty.rent
-        self.wealth += publicproperty.rent
+        if len(self.publicproperty) == 1:
+            self.cash_in_hand += publicproperty.rent
+            self.wealth += publicproperty.rent
+        elif len(self.publicproperty) == 2:
+            self.cash_in_hand += publicproperty.rent_with_two
+            self.wealth += publicproperty.rent_with_two
+        elif len(self.publicproperty) == 3:
+            self.cash_in_hand += publicproperty.rent_with_three
+            self.wealth += publicproperty.rent_with_three
+        else:
+            self.cash_in_hand += publicproperty.rent_with_four
+            self.wealth += publicproperty.rent_with_four
 
     def buy(self, city: City):
         pass
@@ -50,7 +61,8 @@ class Players:
 
     def buy_publicproperty(self, publicproperty: Publicproperties):
         self.cash_in_hand -= publicproperty.acquisition_cost
-        self.properties.append(publicproperty)
+        self.publicproperty.append(publicproperty)
+        publicproperty.totalproperty += 1
         # self.colours.append(pp.colour)
 
     def move_forward(self, num) -> LinkedList:
