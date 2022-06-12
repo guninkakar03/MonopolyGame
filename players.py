@@ -64,8 +64,6 @@ class Players:
                     city.rent = city.rent_of_hotel
                     city.number_of_houses += 1
 
-
-
     def buy(self, city: City):
         pass
 
@@ -87,6 +85,7 @@ class Players:
             curr = curr.next
             if isinstance(curr, Start):
                 self.cash_in_hand += 200  # adds money when player passes through the start
+                self.wealth += 200 #Wealth increases as well.
 
         self.board = curr
         return curr
