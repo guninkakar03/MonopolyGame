@@ -29,7 +29,8 @@ class City:
 # ==============================================================================
 class Delhi(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 17
@@ -42,7 +43,7 @@ class Delhi(City):
 
 class Tokyo(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 27
@@ -55,7 +56,7 @@ class Tokyo(City):
 
 class Paris(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 35
@@ -73,7 +74,7 @@ class Paris(City):
 
 class London(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 27
@@ -86,7 +87,7 @@ class London(City):
 
 class Oslo(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 27
@@ -99,7 +100,7 @@ class Oslo(City):
 
 class Toronto(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 27
@@ -117,7 +118,7 @@ class Toronto(City):
 
 class Mumbai(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 27
@@ -130,7 +131,7 @@ class Mumbai(City):
 
 class LosAngeles(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 27
@@ -143,7 +144,7 @@ class LosAngeles(City):
 
 class Waterloo(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 27
@@ -159,7 +160,7 @@ class Waterloo(City):
 # ==============================================================================
 class Sydney(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 27
@@ -172,7 +173,7 @@ class Sydney(City):
 
 class Seoul(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 27
@@ -185,7 +186,7 @@ class Seoul(City):
 
 class Bangkok(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 27
@@ -203,7 +204,7 @@ class Bangkok(City):
 
 class Shanghai(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 27
@@ -216,7 +217,7 @@ class Shanghai(City):
 
 class Moscow(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 27
@@ -229,7 +230,7 @@ class Moscow(City):
 
 class Cairo(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 27
@@ -246,7 +247,7 @@ class Cairo(City):
 
 class Madrid(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 27
@@ -259,7 +260,7 @@ class Madrid(City):
 
 class Jakarta(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 27
@@ -272,7 +273,7 @@ class Jakarta(City):
 
 class Peru(City):
     def __init__(self):
-        City.__init__(cost_of_house, cost_of_hotel)
+        super().__init__()
         self.owner = False
         self.acquisition_cost = 100
         self.rent = 27
