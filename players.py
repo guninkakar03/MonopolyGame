@@ -32,11 +32,11 @@ class Players:
         self.cash_in_hand += city.rent
         self.wealth += city.rent
 
-    def pay_rent_public(self, publicproperty: Publicproperties):
+    def pay_rent_public(self, publicproperty: PublicProperties):
         self.cash_in_hand -= publicproperty.rent
         self.wealth -= publicproperty.rent
 
-    def receive_rent_public(self, publicproperty: Publicproperties):
+    def receive_rent_public(self, publicproperty: PublicProperties):
         if len(self.publicproperty) == 1:
             self.cash_in_hand += publicproperty.rent
             self.wealth += publicproperty.rent
@@ -73,7 +73,7 @@ class Players:
         self.colours.append(city.colour)
         # self.wealth += price
 
-    def buy_publicproperty(self, publicproperty: Publicproperties):
+    def buy_publicproperty(self, publicproperty: PublicProperties):
         self.cash_in_hand -= publicproperty.acquisition_cost
         self.publicproperty.append(publicproperty)
         publicproperty.totalproperty += 1

@@ -43,7 +43,7 @@ def game_formation() -> None:
                 # i removed the 200 thing as it is already covered in
                 # player.move_forward - check it out ;)
 
-            elif isinstance(current_tile, Publicproperties):
+            elif isinstance(current_tile, PublicProperties):
                 public_property_decision(current_tile, player, list_players)
 
         # check the status of this player
@@ -77,7 +77,7 @@ def property_decision(current_tile: City, player: Players, list_players: LinkedL
         # py qt ===insufficient funds===
 
 
-def public_property_decision(current_tile: Publicproperties, player: Players, list_players: LinkedList) -> None:
+def public_property_decision(current_tile: PublicProperties, player: Players, list_players: LinkedList) -> None:
     if not current_tile.owner and current_tile not in player.publicproperty:
         # player.pay_rent(current_tile)
         player_receive = who_public_property(list_players, current_tile)
@@ -116,7 +116,7 @@ def who_property(list_players: LinkedList, city: City) -> Players:
         curr = curr.next
 
 
-def who_public_property(list_players: LinkedList, public_property: Publicproperties) -> Players:
+def who_public_property(list_players: LinkedList, public_property: PublicProperties) -> Players:
     """
     list_players: LinkedList of players
     public_property: A property

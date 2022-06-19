@@ -1,4 +1,4 @@
-class Publicproperties:
+class PublicProperties:
     """
     These are properties such as Railways, Airport etc
     according to Plato
@@ -12,13 +12,13 @@ class Publicproperties:
         self.rent_with_two = 70
         self.rent_with_three = 105
         self.rent_with_four = 140
-        self.totalproperty=0
+        self.totalproperty = 0
 
     def is_owner(self):
         return self.owner
 
 
-class Harbour(Publicproperties):
+class Harbour(PublicProperties):
     def __init__(self):
         super().__init__()
         # self.owner = False
@@ -27,7 +27,7 @@ class Harbour(Publicproperties):
         self.sell_price = 80
 
 
-class Railway(Publicproperties):
+class Railway(PublicProperties):
     def __init__(self):
         super().__init__()
         # self.owner = False
@@ -36,7 +36,7 @@ class Railway(Publicproperties):
         self.sell_price = 120
 
 
-class Electricity(Publicproperties):
+class Electricity(PublicProperties):
     def __init__(self):
         super().__init__()
         # self.owner = False
@@ -45,7 +45,7 @@ class Electricity(Publicproperties):
         self.sell_price = 160
 
 
-class Airport(Publicproperties):
+class Airport(PublicProperties):
     def __init__(self):
         super().__init__()
         # self.owner = False
