@@ -1,5 +1,9 @@
+from players import *
+from Linked_list_api import *
+
+
 class CommunityChest:
-    def perform(self):
+    def perform(self, player: Players, list_players: LinkedList):
         raise NotImplementedError
 
 
@@ -9,8 +13,14 @@ class Task1(CommunityChest):
     """
     pass
 
-    def perform(self):
-        pass
+    def perform(self, player: Players, list_players: LinkedList):
+        player.cash_in_hand -= 100
+        curr = list_players._first
+        while curr.next is not list_players._first:
+            player_rem = curr.item
+            if not player_rem == player:
+                player_rem.cash_in_hand += 25
+            curr = curr.next
 
 
 class Task2(CommunityChest):
@@ -19,8 +29,14 @@ class Task2(CommunityChest):
     """
     pass
 
-    def perform(self):
-        pass
+    def perform(self, player: Players, list_players: LinkedList):
+        player.cash_in_hand += 100
+        curr = list_players._first
+        while curr.next is not list_players._first:
+            player_rem = curr.item
+            if not player_rem == player:
+                player_rem.cash_in_hand -= 25
+            curr = curr.next
 
 
 class Task3(CommunityChest):
@@ -29,8 +45,8 @@ class Task3(CommunityChest):
     """
     pass
 
-    def perform(self):
-        pass
+    def perform(self, player: Players, list_players: LinkedList):
+        player.send_to_jail()
 
 
 class Task4(CommunityChest):
