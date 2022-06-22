@@ -61,9 +61,10 @@ class Players:
                 elif city.number_of_houses == 1:
                     city.rent = city.rent_with_2_house
                     city.number_of_houses += 1
-                else:
+                elif city.number_of_houses == 2:
                     city.rent = city.rent_of_hotel
                     city.number_of_houses += 1
+
 
     def buy(self, city: City):
         pass
