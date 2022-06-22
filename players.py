@@ -54,6 +54,7 @@ class Players:
         if self.colours.count(city.colour) == 3:
             verdict = input("want to buy house: ")
             if verdict == 'Y':
+                self.cash_in_hand -= city.cost_of_house
                 if city.number_of_houses == 0:
                     city.rent = city.rent_with_1_house
                     city.number_of_houses += 1

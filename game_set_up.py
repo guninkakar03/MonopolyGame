@@ -46,6 +46,7 @@ def game_formation() -> None:
             elif isinstance(current_tile, PublicProperties):
                 public_property_decision(current_tile, player, list_players)
 
+        curr = curr.next  # gets the next player
         # check the status of this player
         # if bankrupt, ie, if money is less than $-500
         if player.cash_in_hand < -500:
@@ -57,12 +58,14 @@ def game_formation() -> None:
         if player.cash_in_hand >= 3000:
             # python qt line === you won ===
             break
-        curr = curr.next  # gets the next player
 
 
 def property_decision(current_tile: City, player: Players, list_players: LinkedList) -> None:
     # checks if the property is owned
-    if current_tile.owner and current_tile not in player.properties:
+
+    if not current_tile.owner and current_tile in player.properties:
+        pass
+    elif not current_tile.owner and current_tile not in player.properties:
 
         player.pay_rent(current_tile)
         player_receive = who_property(list_players, current_tile)
@@ -78,9 +81,13 @@ def property_decision(current_tile: City, player: Players, list_players: LinkedL
 
 
 def public_property_decision(current_tile: PublicProperties, player: Players, list_players: LinkedList) -> None:
-    if not current_tile.owner and current_tile not in player.publicproperty:
+
+    if not current_tile.owner and current_tile in player.publicproperty:
+        pass
+    elif not current_tile.owner and current_tile not in player.publicproperty:
         # player.pay_rent(current_tile)
         player_receive = who_public_property(list_players, current_tile)
+
         if len(player_receive.publicproperty) == 1:
             player.pay_rent_public(current_tile)
         elif len(player_receive.publicproperty) == 2:
@@ -135,6 +142,10 @@ def jail_decision(player: Players, decision: str) -> None:
         player.cash_in_hand -= 150  # player pays $150 to get out, need to check whether wealth decreases too
     else:
         player.send_to_jail()
+
+
+def sell_property():
+    pass
 
 
 '''def buy_or_not(player: Players, decision: str) -> None:
