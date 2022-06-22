@@ -20,6 +20,7 @@ class City:
         self.rent_of_hotel = 10
         self.colour = ""
 
+
     def is_owner(self):
         return self.owner
 
