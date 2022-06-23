@@ -64,10 +64,9 @@ def game_formation() -> None:
 def property_decision(current_tile: City, player: Players, list_players: LinkedList) -> None:
     # checks if the property is owned
 
-    if not current_tile.owner and current_tile in player.properties:
+    if current_tile.owner and current_tile in player.properties:
         pass
-    elif not (current_tile.owner or current_tile in player.properties):#Issue in this condition is getting satisfied in the first chance
-
+    elif current_tile.owner and current_tile not in player.properties:  # Issue in this condition is getting satisfied in the first chance
         player.pay_rent(current_tile)
         player_receive = who_property(list_players, current_tile)
         player_receive.receive_rent(current_tile)
@@ -82,10 +81,9 @@ def property_decision(current_tile: City, player: Players, list_players: LinkedL
 
 
 def public_property_decision(current_tile: PublicProperties, player: Players, list_players: LinkedList) -> None:
-
-    if not current_tile.owner and current_tile in player.publicproperty:
+    if current_tile.owner and current_tile in player.publicproperty:
         pass
-    elif not (current_tile.owner or current_tile  in player.publicproperty):
+    elif current_tile.owner and current_tile not in player.publicproperty:
         # player.pay_rent(current_tile)
         player_receive = who_public_property(list_players, current_tile)
 
@@ -103,7 +101,7 @@ def public_property_decision(current_tile: PublicProperties, player: Players, li
         player_receive.receive_rent_public(current_tile)
 
     elif player.cash_in_hand >= current_tile.acquisition_cost:
-        verdict = input(F"Do you want to buy the property for{current_tile.acquisition_cost}?(Y/N)")
+        verdict = input(F"Do you want to buy the public property for{current_tile.acquisition_cost}?(Y/N)")
         if verdict == 'Y':
             player.buy_publicproperty(current_tile)  # check this
     else:

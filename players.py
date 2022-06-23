@@ -3,6 +3,7 @@ from gaming_board import *
 from attributes_boad import *
 from public_property import *
 from Linked_list_api import *
+from community_chest import *
 
 
 class Players:
