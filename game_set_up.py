@@ -5,6 +5,7 @@ from Linked_list_api import *
 from attributes_boad import *
 from city import *
 from public_property import *
+from community_chest import *
 
 
 def game_formation() -> None:
@@ -37,7 +38,7 @@ def game_formation() -> None:
                 jail_decision(player, verdict)
 
             # elif isinstance(current_tile, CommunityChest):
-            #     pass
+            #      pass
             elif isinstance(current_tile, Start):
                 pass
                 # i removed the 200 thing as it is already covered in
@@ -65,7 +66,7 @@ def property_decision(current_tile: City, player: Players, list_players: LinkedL
 
     if not current_tile.owner and current_tile in player.properties:
         pass
-    elif not current_tile.owner and current_tile not in player.properties:
+    elif not (current_tile.owner or current_tile in player.properties):#Issue in this condition is getting satisfied in the first chance
 
         player.pay_rent(current_tile)
         player_receive = who_property(list_players, current_tile)
@@ -84,7 +85,7 @@ def public_property_decision(current_tile: PublicProperties, player: Players, li
 
     if not current_tile.owner and current_tile in player.publicproperty:
         pass
-    elif not current_tile.owner and current_tile not in player.publicproperty:
+    elif not (current_tile.owner or current_tile  in player.publicproperty):
         # player.pay_rent(current_tile)
         player_receive = who_public_property(list_players, current_tile)
 
@@ -116,6 +117,8 @@ def who_property(list_players: LinkedList, city: City) -> Players:
     :return: Returns the player who has the property.
     """
     curr = list_players._first
+    if city in curr.item.properties:
+        return curr.item
     while curr.next is not list_players._first:
         player = curr.item
         if city in player.properties:
@@ -130,6 +133,8 @@ def who_public_property(list_players: LinkedList, public_property: PublicPropert
     :return: Returns the player who has the property.
     """
     curr = list_players._first
+    if public_property in curr.item.publicproperty:
+        return curr.item
     while curr.next is not list_players._first:
         player = curr.item
         if public_property in player.publicproperty:
